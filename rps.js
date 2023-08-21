@@ -70,6 +70,10 @@ function game(){
         console.log("Computer wins!");
         console.log("Player: "+P+"\nComputer"+C);
     }
+    else if(P==C){
+        console.log("Draw!");
+        console.log("Player: "+P+"\nComputer: "+C);
+    }
     else{
         console.log("Player wins!");
         console.log("Player: "+P+"\nComputer: "+C);
