@@ -11,43 +11,69 @@ function getComputerChoice(){
             choice = "Scissors"
             break;
     }
-    console.log(choice);
-    console.log(rnd);
+    console.log("Computer: "+choice);
     return choice;
 }
 
 function playRound(Player,Computer){
     if(Player.toLowerCase() == Computer.toLowerCase()){
-        return "Draw | Player: "+ Player + "\nComputer: "+ Computer;
+        return "D"; //Draw
     }
     else if(Player.toLowerCase() == "rock" && Computer.toLowerCase() != "rock"){
         if(Computer.toLowerCase() == "paper"){
-            return "You Lose! Paper beats Rock"+ "\n" + "Player  : " +Player + "\nComputer: "+ Computer;
+            return "C"; //Computer win
         }
         else{
-            return "You win! Rock beats Scissors"+ "\n" + "Player  : " +Player + "\nComputer: "+ Computer;
+            return "P"; //Player win
         }
     }
     else if(Player.toLowerCase() == "paper" && Computer.toLowerCase() != "paper"){
         if(Computer.toLowerCase() == "scissors"){
-            return "You Lose! Scissors beats Paper"+ "\n"+"Player  : " +Player + "\nComputer: "+ Computer;
+            return "C" //Computer win
         }
         else{
-            return "You win! Paper beats Rock"+ "\n" + "Player  : " + Player + "\nComputer: "+ Computer;
+            return "P"; //Player win
         }
     }
     else if(Player.toLowerCase() == "scissors" && Computer.toLowerCase() != "scissors"){
         if(Computer.toLowerCase() == "rock"){
-            return "You Lose! Rock beats Scissors"+ "\n"+ "Player  : " +Player + "\nComputer: "+ Computer;
+            return "C"; //Computer win
         }
         else{
-            return "You win! Scissors beats Paper"+ "\n"+ "Player  : " +Player + "\nComputer: "+ Computer;
+            return "P"; //Player win
         }
     }
 }
 
+function game(){
+    let P = 0;
+    let C = 0;
+    for(let i = 0; i<5; i++){
+        let pch = prompt("Choose: Rock | Paper | Scissors")
+        console.log(pch)
+        switch (playRound(pch,getComputerChoice())) {
+            case "D":
+                P++,C++;
+                console.log("Player: "+P+" "+"Computer: "+C);
+                break;
+            case "C":
+                C++;
+                console.log("Player: "+P+" "+"Computer: "+C);
+                break;
+            case "P":
+                P++;
+                console.log("Player: "+P+" "+"Computer: "+C);
+                break;
+        }
+    }
+    if(P<C){
+        console.log("Computer wins!");
+        console.log("Player: "+P+"\nComputer"+C);
+    }
+    else{
+        console.log("Player wins!");
+        console.log("Player: "+P+"\nComputer: "+C);
+    }
+}
 
-
-const Player = "rock";
-const Computer = getComputerChoice();
-console.log(playRound(Player, Computer));
+game()
